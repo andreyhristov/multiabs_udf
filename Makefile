@@ -1,7 +1,7 @@
 build:
 	docker build --no-cache . --tag multiabs_mysql:8.0
 
-build_base:
+build-base:
 	docker build --no-cache . -f Dockerfile.base --tag multiabs_mysql_base:8.0
 	
 

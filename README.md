@@ -53,6 +53,10 @@ RUN apt-get update && apt-get install -y \
 
 If you want to skip the container-kill and container-destroy commands just pass `-rm` to docker in step container-start. The container opens local port 3306 which the function-* targets use with local MySQL CLI which you need to have installed in the host OS.
 
+### After a change to multiabs_udf.so
+- If you have a container already running execute ```make container-kill container-destroy```
+- ```make build container-start``` to rebuild the container and start it. Then run ```make function-test```. Normally you need to run ```make function-create``` only once and that is after your
+first build or you have removed your MySQL datadir. If the datadir is reused from a previous run the UDF will be loaded automagically by MySQL on server start (container) start.
 
 ## Examples
 MULTI_ABS() returns 0
